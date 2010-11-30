@@ -29,6 +29,8 @@ the_comment_rating();
 ?>
 </code>
 
+Read More: http://scottctaylor.wordpress.com/2010/11/30/new-plugin-rate/
+
 == Screenshots ==
 
 == Changelog ==
