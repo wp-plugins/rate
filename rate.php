@@ -41,7 +41,7 @@ function rate_calculate($id = 0) {
 	
 	if ($rating === 0.0) {
 		$coerced_rating = 0.0;
-	} else if ($rating % 0.5 !== 0) {
+	} else if (($rating * 10) % 5 !== 0) {
 		$coerced_rating = round($rating * 2.0, 0) / 2.0;
 	} else {
 		$coerced_rating = $rating;

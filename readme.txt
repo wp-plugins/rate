@@ -32,6 +32,13 @@ the_comment_rating();
 Read More: http://scottctaylor.wordpress.com/2010/11/30/new-plugin-rate/
 
 == Screenshots ==
+1. The top rating is an average of all of the comment ratings
+
+2. You can add the_rating() anywhere that has comments attached to it using the Theme editor
+
+3. You can add ratings to comments in the Twenty Ten or any other Theme by adding the_comment_rating() to the custom comment callback located in functions.php using the Theme Editor
+
+4. You can edit the CSS for Rate right in the Plugin Editor. Choose "Rate" from the dropdown, then select rate/css/rate.css to edit the styles right in the Editor
 
 == Changelog ==
 
