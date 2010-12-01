@@ -42,6 +42,11 @@ Read More: http://scottctaylor.wordpress.com/2010/11/30/new-plugin-rate/
 
 == Changelog ==
 
+= 0.1.2 =
+* Got rid of Divide by Zero warning that PHP was throwing
+* Does not count ratings of Zero or non-ratings in the Average Rating displayed by the_rating()
+* Added screenshots to the Plugin page at WordPress.org
+
 = 0.1 =
 * Initial release
 
