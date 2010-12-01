@@ -41,6 +41,10 @@ Read More: http://scottctaylor.wordpress.com/2010/11/30/new-plugin-rate/
 4. You can edit the CSS for Rate right in the Plugin Editor. Choose "Rate" from the dropdown, then select rate/css/rate.css to edit the styles right in the Editor
 
 == Changelog ==
+= 0.1.2 =
+* Got rid of Divide by Zero warning that PHP was throwing
+* Does not count ratings of Zero or non-ratings in the Average Rating displayed by the_rating()
+* Added screenshots to the Plugin page at WordPress.org
 
 = 0.1 =
 * Initial release
