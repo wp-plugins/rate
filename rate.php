@@ -3,7 +3,7 @@
 Plugin Name: Rate
 Description: Ratings: clean, lightweight and easy
 Author: Scott Taylor
-Version: 0.1
+Version: 0.1.2
 Author URI: http://tsunamiorigami.com
 */
 
@@ -39,7 +39,9 @@ function rate_calculate($id = 0) {
 	}
 	$rating = (float) number_format($rating, 1, '.', '');
 	
-	if ($rating % 0.5 !== 0) {
+	if ($rating === 0.0) {
+		$coerced_rating = 0.0;
+	} else if (($rating * 10) % 5 !== 0) {
 		$coerced_rating = round($rating * 2.0, 0) / 2.0;
 	} else {
 		$coerced_rating = $rating;
