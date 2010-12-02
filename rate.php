@@ -3,7 +3,7 @@
 Plugin Name: Rate
 Description: Ratings: clean, lightweight and easy
 Author: Scott Taylor
-Version: 0.1.2
+Version: 0.1.3
 Author URI: http://tsunamiorigami.com
 */
 
