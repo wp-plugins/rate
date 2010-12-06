@@ -129,7 +129,7 @@ function the_comment_rating() {
 
 function rate_styles() {
 	if (is_file(STYLESHEETPATH . '/rate.css')) {
-		wp_enqueue_style('user-rate', STYLESHEETDIR . '/rate.css');
+		wp_enqueue_style('user-rate', get_bloginfo('stylesheet_directory') . '/rate.css');
 	} else {
 		wp_enqueue_style('rate', WP_PLUGIN_URL . '/rate/css/rate.css');	
 	}
