@@ -3,7 +3,7 @@
 Plugin Name: Rate
 Description: Ratings: clean, lightweight and easy
 Author: Scott Taylor
-Version: 0.1.4
+Version: 0.2
 Author URI: http://tsunamiorigami.com
 */
 
@@ -34,7 +34,7 @@ function rate_calculate($id = 0) {
 		$previous_id = (int) $c->comment_ID;
 	} else {
 		$rating = $wpdb->get_var(
-			$wpdb->prepare("SELECT AVG(comment_karma) FROM $wpdb->comments WHERE comment_post_ID = %d", 
+			$wpdb->prepare("SELECT AVG(comment_karma) FROM $wpdb->comments WHERE comment_post_ID = %d AND comment_karma > 0", 
 				$coerced_id)); 		
 	}
 	$rating = (float) number_format($rating, 1, '.', '');
@@ -77,6 +77,25 @@ function rate_calculate($id = 0) {
 	
 	return implode('', $stars);		
 }
+
+function rate_save_karma($id) {
+	global $wpdb;
+	
+	if (isset($_POST['comment_karma'])) {
+		$wpdb->update($wpdb->comments, 
+			array('comment_karma' => (int) $_POST['comment_karma']),
+			array('comment_ID' => $id)
+		);
+	}
+}
+add_action('comment_post', 'rate_save_karma');
+
+function rate_form_filter($content) {
+	$star = '<li class="empty"><span class="l"></span><span class="r"></span></li>';
+	$parts = array('<ul class="rating form-rating">', $star, $star, $star, $star, $star, '</ul>');
+	echo implode('', $parts);
+}
+add_action('comment_form_top', 'rate_form_filter');
 
 function rate_item_callback() {
 	global $wpdb;
