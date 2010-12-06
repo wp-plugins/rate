@@ -3,7 +3,7 @@ Contributors: wonderboymusic
 Tags: ratings, rate, comments, posts, pages, manage, reviews, metadata, comment karma
 Requires at least: 3.0
 Tested up to: 3.0
-Stable Tag: 0.1.3
+Stable Tag: 0.1.4
 
 Ratings: clean, lightweight and easy
 
@@ -41,6 +41,9 @@ Read More: http://scottctaylor.wordpress.com/2010/11/30/new-plugin-rate/
 4. You can edit the CSS for Rate right in the Plugin Editor. Choose "Rate" from the dropdown, then select rate/css/rate.css to edit the styles right in the Editor
 
 == Changelog ==
+
+= 0.1.4 =
+* I broke the rate.css path, oops!
 
 = 0.1.2 =
 * Got rid of Divide by Zero warning that PHP was throwing
