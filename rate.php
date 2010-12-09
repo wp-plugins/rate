@@ -3,7 +3,7 @@
 Plugin Name: Rate
 Description: Ratings: clean, lightweight and easy
 Author: Scott Taylor
-Version: 0.2
+Version: 0.2.1
 Author URI: http://tsunamiorigami.com
 */
 
@@ -34,8 +34,9 @@ function rate_calculate($id = 0) {
 		$previous_id = (int) $c->comment_ID;
 	} else {
 		$rating = $wpdb->get_var(
-			$wpdb->prepare("SELECT AVG(comment_karma) FROM $wpdb->comments WHERE comment_post_ID = %d AND comment_karma > 0", 
-				$coerced_id)); 		
+			$wpdb->prepare("SELECT AVG(comment_karma) FROM $wpdb->comments WHERE ". 
+				"comment_post_ID = %d AND comment_karma > %d AND comment_approved = %d", 
+				$coerced_id, 0, 1)); 		
 	}
 	$rating = (float) number_format($rating, 1, '.', '');
 	
@@ -137,8 +138,8 @@ function rate_item_callback() {
 add_action('wp_ajax_nopriv_rate_item', 'rate_item_callback');
 add_action('wp_ajax_rate_item', 'rate_item_callback');
 
-function the_rating() {
-	echo rate_calculate();
+function the_rating($id = 0) {
+	echo rate_calculate($id);
 }
 
 function the_comment_rating() {
