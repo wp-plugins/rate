@@ -3,7 +3,7 @@ Contributors: wonderboymusic
 Tags: ratings, rate, comments, posts, pages, manage, reviews, metadata, comment karma
 Requires at least: 3.0
 Tested up to: 3.0
-Stable Tag: 0.2.1
+Stable Tag: 0.2.1.1
 
 Ratings: clean, lightweight and easy
 
