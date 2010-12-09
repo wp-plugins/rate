@@ -3,7 +3,7 @@ Contributors: wonderboymusic
 Tags: ratings, rate, comments, posts, pages, manage, reviews, metadata, comment karma
 Requires at least: 3.0
 Tested up to: 3.0
-Stable Tag: 0.2
+Stable Tag: 0.2.1
 
 Ratings: clean, lightweight and easy
 
@@ -40,6 +40,9 @@ Read More: http://scottctaylor.wordpress.com/2010/11/30/new-plugin-rate/
 4. You can edit the CSS for Rate right in the Plugin Editor. Choose "Rate" from the dropdown, then select rate/css/rate.css to edit the styles right in the Editor
 
 == Changelog ==
+
+= 0.2.1 =
+* <code>the_rating()</code> now excludes ratings from comments that are awaiting moderation. <code>the_rating($id = 0)</code> will not take an argument of ID. Use it to show a rating anywhere.
 
 = 0.2 = 
 * User can leave a rating while commenting now, can still edit rating inline after comment is posted
