@@ -3,7 +3,7 @@
 Plugin Name: Rate
 Description: Ratings: clean, lightweight and easy
 Author: Scott Taylor
-Version: 0.2.1
+Version: 0.2.1.1
 Author URI: http://tsunamiorigami.com
 */
 
@@ -21,12 +21,11 @@ function rate_user_is_known() {
 	return is_user_logged_in() || !empty($_COOKIE['comment_author_' . COOKIEHASH]);
 }
 
-function rate_calculate($id = 0) {
+function rate_calculate($id = 0, $is_comment = false) {
 	global $wpdb;
 	$url = get_permalink();
 	$coerced_id = (int) $id > 0 ? $id : get_the_id();
 	$previous_id = 0;
-	$is_comment = (int) $id > 0;
 	
 	if ($is_comment) {
 		$c = $GLOBALS['comment'];	
@@ -144,7 +143,7 @@ function the_rating($id = 0) {
 
 function the_comment_rating() {
 	$c = $GLOBALS['comment'];
-	echo rate_calculate($c->comment_post_ID);
+	echo rate_calculate($c->comment_post_ID, true);
 }
 
 function rate_styles() {

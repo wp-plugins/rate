@@ -41,6 +41,9 @@ Read More: http://scottctaylor.wordpress.com/2010/11/30/new-plugin-rate/
 
 == Changelog ==
 
+= 0.2.1.1 = 
+* Whoops, adds second argument to <code>rate_calculate($id = 0, $is_comment = false)</code> for internal purposes
+
 = 0.2.1 =
 * <code>the_rating()</code> now excludes ratings from comments that are awaiting moderation. <code>the_rating($id = 0)</code> will not take an argument of ID. Use it to show a rating anywhere.
 
