@@ -3,7 +3,7 @@
 Plugin Name: Rate
 Description: Ratings: clean, lightweight and easy
 Author: Scott Taylor
-Version: 0.2.1.1
+Version: 0.3
 Author URI: http://tsunamiorigami.com
 */
 
@@ -157,7 +157,7 @@ add_action('wp_print_styles', 'rate_styles');
 
 
 function rate_scripts() {
-	wp_enqueue_script('rate', WP_PLUGIN_URL . '/rate/js/rate.js');
+	wp_enqueue_script('rate', WP_PLUGIN_URL . '/rate/js/rate.js', array('jquery'));
 }
 add_action('wp_print_scripts', 'rate_scripts');
 ?>

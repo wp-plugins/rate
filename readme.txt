@@ -3,7 +3,7 @@ Contributors: wonderboymusic
 Tags: ratings, rate, comments, posts, pages, manage, reviews, metadata, comment karma
 Requires at least: 3.0
 Tested up to: 3.0
-Stable Tag: 0.2.1.1
+Stable Tag: 0.3
 
 Ratings: clean, lightweight and easy
 
@@ -40,6 +40,9 @@ Read More: http://scottctaylor.wordpress.com/2010/11/30/new-plugin-rate/
 4. You can edit the CSS for Rate right in the Plugin Editor. Choose "Rate" from the dropdown, then select rate/css/rate.css to edit the styles right in the Editor
 
 == Changelog ==
+
+= 0.3 =
+* Added jQuery as a required script - Whoops!
 
 = 0.2.1.1 = 
 * Whoops, adds second argument to <code>rate_calculate($id = 0, $is_comment = false)</code> for internal purposes
