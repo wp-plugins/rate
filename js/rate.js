@@ -1,76 +1,80 @@
-"use strict";
-
-/*globals $, jQuery, window, document */
+/*globals jQuery */
 
 (function ($) {
-	var nratings, fratings;
-	
-	function doHover(e) {
-		$(this).prevAll().andSelf()[(e.type === 'mouseenter' ? 'add' : 'remove') + 'Class']('rover');
+	"use strict";
+
+	var karmaId = 'comment_karma';
+
+	function doHover( e ) {
+		$( e.currentTarget )
+			.prevAll().addBack()[(e.type === 'mouseenter' ? 'add' : 'remove') + 'Class']('rover');
 	}
-	
-	function doSuccess(data) {
-		//console.log(data);
+
+	function setUI( elem ) {
+		elem.prevAll().addBack()
+			.addClass( 'whole' ).removeClass( 'empty half rover' );
+
+		elem.nextAll()
+			.addClass( 'empty' ).removeClass( 'whole half rover' );
 	}
-	
-	function doError(e) {
-		//console.log(e);
-	}
-	
-	function setUI(elem) {
-		elem.prevAll().andSelf().addClass('whole').removeClass('empty half rover');
-		elem.nextAll().addClass('empty').removeClass('whole half rover');	
-	}
-	
-	function doFormRating() {
-		var elem = $(this), indx, ctx, field;
-		
-		setUI(elem);	
-		
+
+	function doFormRating( e ) {
+		var elem = $( e.currentTarget ),
+			indx,
+			ctx,
+			field,
+			$karma;
+
+		$karma = $('#comment_karma');
+
+		setUI( elem );
+
 		ctx = elem.parent();
-		indx = ctx.find('li').index(this) + 1;
-		
-		if (!$('#comment_karma').length) {
-			field = $('<input />').attr({
-				name : 'comment_karma',
-				id   : 'comment_karma',
-				value: indx,
-				type : 'hidden'
+		indx = ctx.find('li').index( e.currentTarget ) + 1;
+
+		if ( ! $karma.length ) {
+			field = $('<input type="hidden" />').attr({
+				name : karmaId,
+				id : karmaId,
+				value : indx
 			});
-			ctx.after(field);
+			ctx.after( field );
 		} else {
-			$('#comment_karma').val(indx);
+			$karma.val( indx );
 		}
 	}
-	
-	function doRating() {
-		var elem = $(this), indx, ctx;
-		
-		setUI(elem);		
-		
+
+	function doRating( e ) {
+		var elem = $( e.currentTarget ), indx, ctx;
+
+		setUI( elem );
+
 		ctx = elem.parent();
-		indx = ctx.find('li').index(this) + 1;
+		indx = ctx.find('li').index( e.currentTarget ) + 1;
 
 		$.ajax({
 			type   : 'post',
-			url    : 'http://' + window.location.host + '/wp-admin/admin-ajax.php',
+			url    : '/wp-admin/admin-ajax.php',
 			data   : {
-				action: 'rate_item',
-				rating: indx,
-				'comment_post_ID' : ctx.attr('data-id'),
-				'comment_ID' : ctx.attr('data-comment-id')
-			},
-			success: doSuccess,
-			error  : doError
-		});	
-	
+				action : 'rate_item',
+				rating : indx,
+				comment_post_ID : ctx.data('id'),
+				comment_ID : ctx.data('comment-id')
+			}
+		});
+
 		return false;
 	}
-	
+
 	$(document).ready(function () {
-		nratings = $('.needs-rating li');
-		fratings = $('.form-rating li');
-		fratings.bind('mouseenter mouseleave', doHover).click(doFormRating);
-		nratings.bind('mouseenter mouseleave', doHover).click(doRating);
+		var hoverEvents = 'mouseenter mouseleave';
+
+		$('.form-rating li')
+			.bind( hoverEvents, doHover )
+			.click( doFormRating );
+
+		$('.needs-rating li')
+			.bind( hoverEvents, doHover )
+			.click( doRating );
 	});
 }(jQuery));
